@@ -18,6 +18,7 @@ import {
 
 import { bookingApi } from '@/lib/api';
 import { BookingFormData, RoomType } from '@/types/booking';
+import { validateEmail, validatePhone } from '@/lib/utils';
 import { ROOM_TYPES, BOOKING_CONSTRAINTS } from '@/constants';
 
 export const BookingForm = () => {
