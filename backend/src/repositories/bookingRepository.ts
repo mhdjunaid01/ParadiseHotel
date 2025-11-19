@@ -5,7 +5,12 @@ import { PAGINATION } from '../constants';
 class BookingRepository {
   async create(bookingData: Omit<Booking, '_id' | 'createdAt'>): Promise<Booking> {
     const booking = await BookingModel.create(bookingData);
-    return booking.toObject();
+    const obj = booking.toObject();
+    // Ensure _id is a string if possible
+    return {
+      ...obj,
+      _id: obj._id?.toString(),
+    };
   }
 
   async findMany(queryParams: BookingQueryParams = {}): Promise<PaginatedResponse<Booking>> {
@@ -49,7 +54,10 @@ class BookingRepository {
     const totalPages = Math.ceil(total / limit);
 
     return {
-      data: data as Booking[],
+      data: data.map((item) => ({
+        ...item,
+        _id: item._id?.toString(),
+      })) as Booking[],
       total,
       page,
       limit,

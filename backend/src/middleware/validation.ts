@@ -14,15 +14,6 @@ export const validate = (schema: ZodSchema) => {
   };
 };
 
-export const loginSchema = z.object({
-  email: z.string().email().optional(),
-  username: z.string().optional(),
-  password: z.string().min(1, 'Password is required'),
-}).refine((data) => data.email || data.username, {
-  message: 'Either email or username must be provided',
-  path: ['email'],
-});
-
 export const bookingSchema = z.object({
   name: z
     .string({

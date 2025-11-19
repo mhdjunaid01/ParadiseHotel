@@ -1,7 +1,6 @@
 import express, { Express } from 'express';
 import { connectDatabase } from './config/database';
 import bookingRoutes from './routes/bookingRoutes';
-import authRoutes from './routes/authRoutes';
 import { errorHandler } from './middleware/errorHandler';
 import { securityMiddleware, corsMiddleware, rateLimiter, sanitizeInput } from './middleware/security';
 import './config/env';
@@ -28,7 +27,6 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'Resort Booking API is running' });
 });
 
-app.use('/api/auth', authRoutes);
 app.use('/api/bookings', bookingRoutes);
 
 app.use(errorHandler);

@@ -2,7 +2,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 import { Booking } from '../utils/types';
 import { ROOM_TYPES, BOOKING_CONSTRAINTS } from '../constants';
 
-export interface BookingDocument extends Booking, Document {}
+export interface BookingDocument extends Omit<Booking, '_id'>, Document {}
 
 const bookingSchema = new Schema<BookingDocument>(
   {

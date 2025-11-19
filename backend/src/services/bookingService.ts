@@ -1,8 +1,6 @@
 import { bookingRepository } from '../repositories/bookingRepository';
 import { Booking, PaginatedResponse, BookingQueryParams } from '../utils/types';
 import { createError } from '../middleware/errorHandler';
-import { PAGINATION } from '../constants';
-
 export const createBooking = async (bookingData: Omit<Booking, '_id' | 'createdAt'>): Promise<Booking> => {
   return bookingRepository.create(bookingData);
 };
