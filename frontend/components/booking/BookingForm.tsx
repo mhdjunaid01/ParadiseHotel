@@ -18,8 +18,17 @@ import {
 
 import { bookingApi } from '@/lib/api';
 import { BookingFormData, RoomType } from '@/types/booking';
-import { validateEmail, validatePhone } from '@/lib/utils';
 import { ROOM_TYPES, BOOKING_CONSTRAINTS } from '@/constants';
+
+// Inline email and phone validation since validatePhone is not exported from utils
+const validateEmail = (email: string) => {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+};
+
+const validatePhone = (phone: string) => {
+  // Simple phone validation: ensures at least 10 digits, can be improved per requirements
+  return /^\+?\d{10,15}$/.test(phone.replace(/[\s()-]/g, ''));
+};
 
 export const BookingForm = () => {
   const router = useRouter();
