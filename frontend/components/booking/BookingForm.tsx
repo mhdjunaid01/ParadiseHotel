@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Input } from "@/components/ui/Input";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,7 +18,6 @@ import {
 
 import { bookingApi } from '@/lib/api';
 import { BookingFormData, RoomType } from '@/types/booking';
-import { validateEmail, validatePhone } from '@/lib/utils';
 import { ROOM_TYPES, BOOKING_CONSTRAINTS } from '@/constants';
 
 export const BookingForm = () => {
